@@ -1,0 +1,39 @@
+from time import time
+
+print('Press Enter to start  typing or to break a new line')
+print('Press Enter twice to finish typing')
+input('-----------------------------------------------------')
+
+# record timestamp when user starts typing
+start = time()
+
+text = []
+while True:
+    line = input()
+    if not line:
+        break
+    text.append(line)
+
+# record timestamp when user finishes typing   
+end = time()
+
+print('-------------------------------------------')
+
+elapsed_time = (end-start)/60
+chars_count = sum(len(item) for item in text)
+words_count = chars_count/5
+
+wpm = round(words_count / elapsed_time)
+
+print(f'Your average words per minute(WPM) is {wpm}')
+
+if wpm < 30:
+    print('you should learn the proper typing techniques and practice more to imporve your speed')
+elif wpm < 40:
+    print('not bad,but still below average.focus on your techniques and  keep preacticing')
+elif wpm <50:
+    print('you are now an average typist . you still have significant room for imporvement')
+elif wpm <60:
+    print('congratulations! you are above average')
+else:
+    print('this is speed required for most jobs.you can mow be a professional typist.')
